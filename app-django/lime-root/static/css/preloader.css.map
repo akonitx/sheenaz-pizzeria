@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"sourceRoot": "",
+	"sources": [
+		"../sass/preloader.sass"
+	],
+	"names": [],
+	"mappings": "AAAA;EACC;EACA;EACA;EACA;EACA;EACA",
+	"file": "preloader.css"
+}

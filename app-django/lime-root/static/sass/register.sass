@@ -1,0 +1,18 @@
+@use './static_sass/_colors.sass' as *
+@use './static_sass/_fonts.sass' as *
+@use './static_sass/_mixins.sass' as *
+
+main
+	padding: 200px 0px 0px 0px
+	height: 100vh
+	position: relative
+
+.user
+	position: absolute
+	top: 50%
+	right: 50%
+	transform: translate(50%, -50%)
+	margin: 0 0 400px 0
+
+form
+	@include login_sign

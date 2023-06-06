@@ -1,0 +1,43 @@
+{% extends 'base_generic.html' %}
+{% block main_static%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+	<div class="user">
+		<form action="" method="post">
+			<legend>
+				<h1 class="info_title">Profile</h1>
+			</legend>
+			{% csrf_token %}
+			{{ form.as_div }}
+			<div class="submit_wrapper">
+				<input class="submit" type="submit" value="Update">
+			</div>
+
+		</form>
+		<div class="profile_credentials">
+			<a href="{% url 'change-username' %}">
+				<button class="update_username">Change username</button>
+			</a>
+			<a href="{% url 'change-password' %}">
+				<button class="update_passowrd">Change password</button>
+			</a>
+			<a href="{% url 'change-phone_number' %}">
+				<button class="update_passowrd">Change phone number</button>
+			</a>
+			<a href="{% url 'change-email' %}">
+				<button class="update_passowrd">Change email</button>
+			</a>
+		</div>
+		<div class="log_out_wrapper">
+			<a href="{% url 'logout' %}">
+				<div class="log_out">Log Out</div>
+			</a>
+		</div>
+	</div>
+</main>
+
+{% endblock content %}

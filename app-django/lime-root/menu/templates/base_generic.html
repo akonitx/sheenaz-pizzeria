@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block title %}<title>Sheenaz Pizzeria</title>{% endblock title %}
+
+	<link rel="preload" as="style" href="{% static 'css/preloader.css' %}">
+	<link rel="preload" as="video" href="{% static 'gif/preload.gif'%}">
+	<link rel="preload" as="image" href="{% static 'images/pizza_background.jpg' %}">
+
+	<link rel="preload" as="image" href="{% static 'images/Sheenaz Pizzeria.logo.png' %}">
+	<link rel="stylesheet" href="{% static 'css/preloader.css'%}">
+	<link rel="stylesheet" href="{% static 'css/base_generic.css' %}">
+	<link rel="icon" href="{% static 'images/favicon.ico' %}">
+	<script defer src="{% static 'js/base_generic.js' %}"></script>
+
+	{% block main_static %}
+	<script defer src="{% static 'js/base_generic_main.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/base_generic_main.css' %}">
+	{% endblock main_static %}
+
+
+
+	{% block css_fonts %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Shrikhand&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+	{% endblock css_fonts %}
+
+</head>
+
+<body>
+	<div id="origin_link" data-origin-link="{{ request.META.HTTP_HOST }}/" style="display: none;">
+	</div>
+	<div class="root">
+		<div id="preloader"></div>
+		{% block header %}
+		<header class="website_header ">
+			<div class="delivery_numbers_wrapper">
+				<div class="delivery_numbers">
+					<ul class="delivery_numbers_ul">
+						<li>+380982638472</li>
+						<li>+380298342074</li>
+					</ul>
+				</div>
+			</div>
+			<div class="logo_wrapper">
+				<a href="{% url 'main-page' %}"">
+					<div class=" logo">
+					<span class="logo_image"><img alt="pizzeria logo"
+							src="{% static 'images/Sheenaz Pizzeria.logo.png' %}" height="100"></span>
+					<div class="logo_text_container">
+						<span class="logo_text1">SHEENAZ</span>
+						<span class="logo_text2">PIZZERIA</span>
+					</div>
+			</div>
+			</a>
+	</div>
+
+	<div class="profile_characteristics">
+		{% if request.user.is_authenticated %}
+		<a href="{% url  'profile' %}">
+			<div class="profile">
+				{{ user.username }}
+			</div>
+		</a>
+		{% else %}
+		<a href="{% url 'login' %}">
+			<div class="profile">
+				Login
+			</div>
+		</a>
+		<a href="{% url  'register' %}">
+			<div class="profile">
+				Register
+			</div>
+		</a>
+		{% endif %}
+		<div class="order_bucket">
+			<!-- Here should be numer of customer order of Order Model -->
+			<div class="order__button_wrapper">
+				<a href="{% url 'order' %}" class="order__button">
+					<img class="pizza_box" alt="pizza box"
+						src="{% static 'images/empty_pizza_box.png' %}" height="85">
+					<div class="counter_wrapper">
+						<span class="orders__number_orders">
+							{% if request.user.is_authenticated %}
+
+							{{ user.customer.num_of_orders }}
+
+							{% else %}
+							0
+							{% endif %}
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	</header>
+	{% endblock header %}
+
+	{% block content %}
+	{% endblock content %}
+
+	{% block footer %}
+	<footer>
+		<div class="top_footer">
+			<div class="logo_footer">
+				<span class="logo_image"><img src="{% static 'images/Sheenaz Pizzeria.logo.png' %}"
+						alt="logo image" height="80"></span>
+				<div class="logo_text_container">
+					<span class="logo_text1">SHEENAZ</span>
+					<span class="logo_text2">PIZZERIA</span>
+				</div>
+			</div>
+			<div class="social_networks">
+				<a href="" class="fcbook">
+					<svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 0 16 29">
+						<path fill="#1f1f1f"
+							d="M10.89.597C6.796.704 4.139 3.325 4.139 7.552l-.001 2.559H0v6.323h4.138v11.86h6.65v-11.86h4.02l.846-6.323h-4.866v-2.1c0-1.08.217-1.375 1.363-1.4L15.7 6.61V.874l-.744-.093-.344-.038c-.83-.08-2.183-.15-3.459-.15l-.263.004zm.545 1.698c.726.005 1.464.033 2.086.07l.479.032v2.512l-1.687.001c-2.282 0-3.225 1.08-3.225 3.1v3.801h4.623l-.391 2.923H9.088v11.859h-3.25V14.734H1.7v-2.923h4.139V7.552c0-3.359 1.993-5.259 5.314-5.259l.282.002z">
+						</path>
+					</svg>
+				</a>
+				<a href="" class="inst">
+					<svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 0 31 30">
+						<path fill="#1f1f1f"
+							d="M26.436 0c2.423 0 4.395 1.971 4.395 4.395v21.21c0 2.424-1.972 4.395-4.395 4.395H5.226C2.801 30 .83 28.029.83 25.605V4.395C.83 1.97 2.802 0 5.225 0zm0 1.758H5.226c-1.455 0-2.637 1.183-2.637 2.637v21.21c0 1.454 1.182 2.637 2.636 2.637h21.211c1.454 0 2.637-1.183 2.637-2.637V4.395c0-1.454-1.183-2.637-2.637-2.637zM15.831 7.09c4.361 0 7.91 3.548 7.91 7.91s-3.549 7.91-7.91 7.91c-4.362 0-7.91-3.548-7.91-7.91s3.548-7.91 7.91-7.91zm0 1.758c-3.393 0-6.153 2.76-6.153 6.152 0 3.392 2.76 6.152 6.153 6.152 3.392 0 6.152-2.76 6.152-6.152 0-3.392-2.76-6.152-6.152-6.152zm8.789-5.274c1.454 0 2.637 1.183 2.637 2.637s-1.183 2.637-2.637 2.637-2.637-1.183-2.637-2.637 1.183-2.637 2.637-2.637zm0 1.758c-.485 0-.88.394-.88.879 0 .484.395.879.88.879.484 0 .879-.395.879-.88 0-.484-.395-.878-.88-.878z">
+						</path>
+					</svg>
+				</a>
+			</div>
+		</div>
+		<div class="bottom_footer"> </div>
+	</footer>
+	{% endblock footer %}
+	</div>
+
+</body>
+
+</html>

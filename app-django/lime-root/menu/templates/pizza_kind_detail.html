@@ -1,0 +1,79 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block main_static %}
+<script defer src="{% static 'js/base_generic_main.js' %}"></script>
+<script defer src="{% static 'js/order.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/pizza_kind_detail_main.css' %}">
+{% endblock main_static %}
+
+{% block content %}
+<main>
+	<div class="pizza_detail">
+		<div class="load_all_sizes" style="display: none;">{{ pizzakind.load_all_sizes }}</div>
+		<div class="pizza_img">
+			<a href=""><img src="{{ pizzakind.image_http_url }}" alt="pizza_image" width="475">
+			</a>
+		</div>
+		<div class="pizza_attr">
+
+			<div class="pizza_header">
+				<h1 class="pizza_title"> {{ pizzakind.name}} </h1>
+				<div class="fillings">
+					{% for filling in pizzakind.representation_filling.all %}
+					<span class="filling">
+						{{ filling.name|lower }}
+					</span>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="pizza_description text">
+				<p>{{ pizzakind.description }}</p>
+			</div>
+			<div class="characteristics">
+				<div class="price_changer">
+					<div class="pizza_size_togle">
+						<div class="active background1"></div>
+						<div class="size_1 active"
+							data-pizza-id="{{ pizzakind.all_sizes.size1.pizza_id }}"
+							data-pizza-price_uah="{{ pizzakind.all_sizes.size1.price_UAH }}">
+							{{ pizzakind.all_sizes.size1.size_cm }}cm /
+							{{ pizzakind.all_sizes.size1.weight_grams }}g
+						</div>
+
+						<div class="size_2" data-pizza-id="{{ pizzakind.all_sizes.size2.pizza_id }}"
+							data-pizza-price_uah="{{ pizzakind.all_sizes.size2.price_UAH }}">
+							{{ pizzakind.all_sizes.size2.size_cm }}cm /
+							{{ pizzakind.all_sizes.size2.weight_grams }}g
+						</div>
+					</div>
+					<div class="price_UAH">
+						{{ pizzakind.all_sizes.size1.price_UAH }} UAH
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="dropdown-menu">
+						{% for topping in toppings %}
+						<div class="topping" data-topping-id="{{ topping.pk }}">
+							<div class="topping_name">{{ topping.name }}</div>
+							<div class="topping_price">{{ topping.price_UAH|floatformat:'-1' }} UAH
+							</div>
+							<div class="add_btn ">
+								<img class="add" src="{% static 'images/add.png' %}" alt="add sign">
+								<img class="added" src="{% static 'images/success.svg' %}" alt="added sign">
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="order_container">
+					<div class="additionals">Additionals +</div>
+					<div class="order">Order</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</main>
+{% endblock content %}

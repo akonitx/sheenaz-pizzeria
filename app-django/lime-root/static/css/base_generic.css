@@ -1,0 +1,189 @@
+*, *::before, *::after, a {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.text p::selection {
+  background-color: #070707;
+}
+
+p {
+  line-height: 1.4;
+  word-spacing: 1px;
+  text-shadow: 2px 1px 1px black;
+}
+
+body {
+  width: 100vw;
+  margin: 0px;
+  background: #070707;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6901960784), rgba(0, 0, 0, 0.6901960784)), url("https://s3.eu-central-1.amazonaws.com/lime-static-files.django/static/images/pizza_background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: "Ubuntu";
+  color: white;
+}
+body .root {
+  height: auto;
+}
+
+.website_header {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  padding: 0 30px;
+  justify-content: space-between;
+  box-shadow: 0px 0px 30px 40px rgba(0, 0, 0, 0.8392156863);
+  background-color: rgba(0, 0, 0, 0.8392156863);
+}
+.website_header .logo {
+  transition: all 0.3s ease;
+}
+
+.delivery_numbers_ul {
+  list-style: none;
+  color: #e3a70e;
+  font: 20px/1.4 "Ubuntu";
+  text-shadow: 1px 1px 2px black;
+}
+.delivery_numbers_ul_wrapper {
+  width: 85px;
+  height: 85px;
+}
+
+.logo_wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.logo_wrapper .logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+}
+.logo_wrapper .logo img {
+  padding: 5px 0px 0px 0px;
+}
+.logo_wrapper .logo_text_container {
+  margin-left: 20px;
+  display: inline-flex;
+  flex-direction: column;
+}
+.logo_wrapper .logo_text_container span {
+  text-shadow: 1px 1px 2px black;
+  font: 40px/1.2 "Lobster";
+  color: #FF6000;
+  letter-spacing: 3px;
+  display: block;
+}
+
+.logo_wrapper:hover {
+  transition: all 0.2s ease;
+}
+
+.profile_characteristics {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0 60px;
+  font-size: 30px;
+}
+.profile_characteristics .profile {
+  height: 30px;
+}
+.profile_characteristics .profile:hover {
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FF6000, 0 0 30px #FF6000, 0 0 40px #FF6000, 0 0 50px #FF6000;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+.order__button {
+  display: block;
+  width: 80.46px;
+  height: 85px;
+  position: relative;
+}
+.order__button .counter_wrapper {
+  position: absolute;
+  top: 32%;
+  right: 55%;
+  height: 40px;
+  transform: translate(50%, -50%);
+}
+.order__button .counter_wrapper span {
+  color: #070707;
+  font: 24px/0 "Ubuntu";
+}
+
+.order__button:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+.order__button:hover span {
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FF6000, 0 0 30px #FF6000, 0 0 40px #FF6000, 0 0 50px #FF6000;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+}
+
+.top_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inst {
+  margin: 0 0 0 20px;
+}
+
+.logo_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo_footer img {
+  padding: 5px 0px 0px 0px;
+}
+.logo_footer .logo_text_container {
+  margin-left: 13px;
+  display: inline-flex;
+  flex-direction: column;
+}
+.logo_footer .logo_text_container span {
+  text-shadow: 1px 1px 2px black;
+  font: 30px/1.2 "Lobster";
+  color: #FF6000;
+  letter-spacing: 3px;
+  display: block;
+}
+
+.logo_footer:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+.fcbook svg:hover, .inst svg:hover {
+  text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #FF6000, 0 0 30px #FF6000, 0 0 40px #FF6000, 0 0 50px #FF6000;
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+/*# sourceMappingURL=base_generic.css.map */

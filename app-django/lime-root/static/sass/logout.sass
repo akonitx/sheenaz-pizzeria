@@ -1,0 +1,52 @@
+@use './static_sass/_colors.sass' as *
+@use './static_sass/_fonts.sass' as *
+@use './static_sass/_mixins.sass' as *
+
+main
+	padding: 200px 0px 0px 0px
+	height: 100vh
+	position: relative
+
+.user
+	position: absolute
+	display: flex
+	flex-direction: column
+	font-size: 35px
+	align-items: center
+	gap: 100px 0
+	top: 60%
+	right: 50%
+	transform: translate(50%, -50%)
+	margin: 0 0 400px 0
+	height: 500px
+	width: 500px
+
+.caution_text
+	text-shadow: $text_shadow2
+
+.log_out_wrapper
+	height: auto
+	width: auto
+	position: relative
+	.log_out
+		cursor: pointer
+		position: absolute
+		right: 50%
+		transform: translateX(50%)
+		width: 120px
+		text-align: center
+		height: 35px
+		display: block
+		background-color: $light_red
+		border: 1px solid $black
+		border-radius: 50px
+		font-size: 18px
+		text-shadow: $text_shadow2
+		line-height: 1.7
+		box-shadow: $text_shadow2
+		color: white
+		transition: all 0.2s ease
+	.log_out:hover
+		right: 50%
+		transform: translateX(50%) scale(1.1)
+		transition: all 0.2s ease

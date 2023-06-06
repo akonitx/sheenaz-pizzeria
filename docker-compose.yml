@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+   django:
+      container_name: lime-django
+      env_file:
+         - app-django/.env
+      build: 
+         context: ./app-django
+      ports:
+         - 8000:8000
+      networks:
+         - lime-network
+   nginx:
+      container_name: lime-nginx
+      build: 
+         context: ./nginx
+      ports:
+         - 80:80
+      networks:
+         - lime-network
+      
+
+networks:
+   lime-network:
+      name: lime-network
+      driver: bridge
+

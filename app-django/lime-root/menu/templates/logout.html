@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+{% block main_static%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+<script defer src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main>
+	{% csrf_token %}
+	<div class="user">
+		<div class="caution_text">Do you realy want to log out?</div>
+		<div class="log_out_wrapper">
+			<div class="log_out">Log Out</div>
+		</div>
+
+		</form>
+	</div>
+</main>
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+{% block main_static%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+	<div class="user">
+		<form action="" method="post">
+			<legend>
+				<h1 class="info_title">Registeration</h1>
+			</legend>
+			{% csrf_token %}
+			{{ form.as_div }}
+			<div class="submit_wrapper">
+				<input class="submit" type="submit" value="Registrate">
+				<!-- <div class="submit_text">Registrate</div> -->
+			</div>
+
+		</form>
+
+	</div>
+</main>
+
+{% endblock content %}

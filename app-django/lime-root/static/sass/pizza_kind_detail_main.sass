@@ -1,0 +1,205 @@
+@use './static_sass/_colors.sass' as *
+@use './static_sass/_fonts.sass' as *
+@use './static_sass/_mixins.sass' as *
+
+main
+	padding: 200px 100px 0 100px
+	margin: 0 0 180px 0
+
+.root
+	height: 100vh
+	min-height: 900px
+.pizza_detail
+	display: flex
+	flex-direction: row
+	align-items: flex-start
+	justify-content: space-between
+
+.pizza_header
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: space-between
+	gap: 15px 0px
+
+.pizza_attr
+	width: 50vw
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: space-around
+	gap: 60px 0
+	position: relative
+
+.pizza_img img:hover
+	-webkit-filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 7px $light_orange) drop-shadow(0 0 10px $light_orange) drop-shadow(0 0 15px $light_orange) drop-shadow(0 0 17px $light_orange)
+	transform: scale(1.1)
+	transition: all 0.2s ease
+	position: relative
+	z-index: 3
+
+.pizza_title
+	font-size: 48px
+	color: white
+	text-shadow: $text_shadow2
+
+.pizza_title:hover
+	@include text-shadow
+
+.fillings
+	text-decoration: none
+	display: flex
+	flex-wrap: wrap
+	justify-content: center
+	margin: 0px 0px 20px 0px
+
+.filling
+	color: $light_orange
+	text-decoration: none
+	font-size: 16px
+	margin: 1px 8px 5px 8px
+	text-shadow: $text_shadow2
+
+.characteristics
+	align-self: flex-start
+
+.price_changer
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: space-between
+	align-self: start
+	width: 380px
+	margin: 0 0 25px 0
+
+.price_UAH
+	font-size: 20px
+	text-shadow: $text_shadow2
+	transition: transform 0.3s ease
+
+.pizza_size_togle
+	display: flex
+	position: relative
+	cursor: pointer
+	background-color: $black_background
+	width: 260px
+	border-radius: 20px
+	align-items: center
+	justify-content: space-around
+	font-size: 12px
+	border: 1px solid $black
+	*
+		font-size: 16px
+.pizza_size_togle:hover
+	@include box-shadow
+
+.background1
+	background-color: $light_orange
+	z-index: 0
+	position: absolute
+	height: 80%
+	width: 47%
+	border-radius: 20px
+	left: 4px
+	transition-duration: 0.2s
+.background2
+	background-color: $light_orange
+	z-index: 0
+	position: absolute
+	height: 80%
+	width: 47%
+	border-radius: 20px
+	left: 135px
+	transition-duration: 0.2s
+
+.size_1, .size_2
+	text-shadow: $text_shadow2
+	padding: 7px 0px
+	z-index: 1
+
+.order_container
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: space-between
+	gap: auto 0
+	font-size: 23px
+	width: 380px
+
+.additionals
+	cursor: pointer
+	text-shadow: $text_shadow2
+.additionals:hover
+	@include text-shadow
+
+.order
+	background-color: $light_red
+	text-shadow: $text_shadow2
+	border: 1px solid $black
+	padding: 11px 40px
+	border-radius: 50px
+	cursor: pointer
+	box-shadow: $text_shadow2
+
+.order:hover
+	@include box-shadow
+
+.dropdown
+	// display: none
+	visibility: collapse
+	opacity: 0
+	overflow-y: scroll
+	position: absolute
+	z-index: 2
+	left: 420px
+	bottom: -110px
+	background-color: $dark_red
+	width: 380px
+	border-radius: 5px
+	padding: 0px
+	height: 225px
+	transition: all 0.5s
+	border: 2px solid $black
+	box-shadow: 0px 0px 2px 2px #000, 0px 0px 2px 2px #000
+	.dropdown-menu
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: space-between
+		// height: 150px
+		gap: 10px 0px
+		.topping
+			display: flex
+			flex-direction: row
+			align-items: center
+			justify-content: space-evenly
+			width: 350px
+
+			.topping_name
+				flex: 2
+			.add_btn
+				position: relative
+				z-index: 4
+				margin: 0px 0px 0px 20px
+				height: 44px
+				width: 44px
+				border-radius: 50%
+				border: 1px solid $black
+				cursor: pointer
+				background-color: $black_aa
+				*
+					position: absolute
+					height: 15px
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+				.added
+					display: none
+			.active
+				background-color: $light_orange
+
+.dropdown:hover
+	@include box-shadow
+
+.add_btn:hover
+	@include box-shadow

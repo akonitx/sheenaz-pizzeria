@@ -1,0 +1,92 @@
+{% extends 'base_generic.html' %}
+
+{% load static %}
+
+{% block main_static %}
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+<script defer src="{% static 'js/order_remove_items.js' %}"></script>
+{% endblock main_static %}
+
+{% block content %}
+<main>
+	<div class="order">
+		<div class="order_items">
+			<h1>Your Orders</h1>
+			<ul class="order_items__list">
+
+				{% for order in orders %}
+				{% for order_pizza in order.order_pizzas.all %}
+				<li data-order-pizza-id="{{ order_pizza.pk }}" data-order-id="{{ order.pk }}"
+					data-customer-id="{{ user.customer.id }}">
+					<div class="wrapper">
+						<div class="pizza_img"><a
+								href="{{ order_pizza.pizza.pizza_kind.get_absolute_url }}"><img
+									src="{{ order_pizza.pizza.pizza_kind.image_http_url }}" alt=""></a>
+						</div>
+
+						<div class="main">
+							<div class="title text">{{ order_pizza.pizza.pizza_kind.name }}</div>
+
+							<div class="order_attr">
+								<label class="text">Amount: </label>
+								<div class="amount label_value" data-order-pizza-amount="{{ order_pizza.amount }}" data-order-pizza-pk="{{ order_pizza.pk}}" data-pizza-price="{{ order_pizza.pizza.price_UAH }}">
+									<div class="decrement_button text">–</div>
+									<div class="amount_value text">{{ order_pizza.amount }}</div>
+									<div class="increment_button text">+</div>
+								</div>
+							</div>
+							<div class="order_attr">
+								<label class="text">Price: </label>
+								<div class="pizza_cost text label_value">{{ order_pizza.pizza.price_UAH }}
+									UAH
+								</div>
+							</div>
+							<div class="order_attr">
+								<label class="text">Weight: </label>
+								<div class="weight  text label_value">{{ order_pizza.pizza.weight_grams }}g
+								</div>
+							</div>
+							<div class="order_attr">
+								<label class="text">Size: </label>
+								<div class="size text label_value">{{ order_pizza.pizza.size_cm }}cm</div>
+							</div>
+						</div>
+					</div>
+					{% if order_pizza.toppings.all %}
+					<div class="botttom">
+						<h2 class="topppings_header text">Toppings</h2>
+						<div class="additionals">
+							<ul class="additionals_list">
+
+								{% for topping in order_pizza.toppings.all %}
+								<li data-topping-id="{{ topping.id }}" data-topping-price="{{ topping.price_UAH }}">
+									<div class="topping_name text"> {{ topping.name}} </div>
+									<div class="price_value_wrapper">
+										<div class="topping_price text "> {{ topping.price_UAH}} UAH</div>
+										<div class="remove_topping_button">–</div>
+									</div>
+								</li>
+								{% endfor %}
+
+							</ul>
+						</div>
+					</div>
+					{% endif %}
+					<div class="remove_from_order_button">remove from order</div>
+				</li>
+
+				{% endfor %}
+				{% endfor %}
+
+			</ul>
+		</div>
+		<div class="final_cost">
+			<label>
+				<div class="final_cost_label">Final Cost:</div>
+			</label>
+			<div class="final_cost_value text"> <span class="cost">{{ total_cost }}</span> UAH</div>
+		</div>
+		<div class="order_submit text">Submit</div>
+	</div>
+</main>
+{% endblock content %}

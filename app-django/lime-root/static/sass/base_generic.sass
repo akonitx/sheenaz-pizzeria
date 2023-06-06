@@ -1,0 +1,159 @@
+@use './static_sass/_colors.sass' as *
+@use './static_sass/_fonts.sass' as *
+@use './static_sass/_mixins.sass' as *
+
+*, *::before, *::after, a
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	text-decoration: none
+	color: white
+	transition: all 0.2s ease
+
+.text p::selection
+	background-color: $black
+
+p
+	line-height: 1.4
+	word-spacing: 1px
+	text-shadow: $text_shadow2
+
+body
+	width: 100vw
+	margin: 0px
+	background: $black
+	background-image: linear-gradient(to right, $body_background_black, $body_background_black), url("https://s3.eu-central-1.amazonaws.com/lime-static-files.django/static/images/pizza_background.jpg")
+	background-size: cover
+	background-attachment: fixed
+	background-repeat: no-repeat
+	font-family: 'Ubuntu'
+	color: white
+	.root
+		height: auto
+
+.website_header
+	position: fixed
+	top: 0
+	z-index: 4
+	display: flex
+	flex-direction: row
+	align-items: center
+	width: 100%
+	height: 120px
+	padding: 0 30px
+	justify-content: space-between
+	box-shadow: 0px 0px 30px 40px $black_header
+	background-color: $black_header
+	.logo
+		transition: all 0.3s ease
+
+.delivery_numbers_ul
+	list-style: none
+	color: $light_yelow
+	font: 20px/1.4 'Ubuntu'
+	text-shadow: $text_shadow
+
+	&_wrapper
+		width: 85px
+		height: 85px
+
+.logo_wrapper
+	position: absolute
+	left: 50%
+	transform: translateX(-50%)
+	cursor: pointer
+
+	.logo
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-self: center
+		img
+			padding: 5px 0px 0px 0px
+			// box-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px $light_orange, 0 0 30px $light_orange, 0 0 40px $light_orange, 0 0 50px $light_orange
+
+		&_text_container
+			margin-left: 20px
+			display: inline-flex
+			flex-direction: column
+			span
+				text-shadow: $text_shadow
+				font: 40px/1.2 'Lobster'
+				color: $logo_color
+				letter-spacing: 3px
+				display: block
+				// text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px $light_orange, 0 0 30px $light_orange, 0 0 40px $light_orange, 0 0 50px $light_orange
+.logo_wrapper:hover
+	transition: all 0.2s ease
+
+.profile_characteristics
+	display: flex
+	flex-direction: row
+	align-items: center
+	gap: 0 60px
+	font-size: 30px
+	.profile
+		height: 30px
+	.profile:hover
+		@include text-shadow
+
+.order__button
+	display: block
+	width: 80.46px
+	height: 85px
+	position: relative
+	.counter_wrapper
+		position: absolute
+		// width: inherit
+		// height: inherit
+		top: 32%
+		right: 55%
+		height: 40px
+		transform: translate(50%,-50%)
+		span
+			color: $black
+			font: 24px/0 'Ubuntu'
+
+.order__button:hover
+	transform: scale(1.1)
+	transition: all 0.2s ease
+	span
+		@include text-shadow
+
+footer
+	display: flex
+	flex-direction: column
+	padding: 80px
+
+.top_footer
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: space-between
+.inst
+	margin: 0 0 0 20px
+
+.logo_footer
+	display: flex
+	flex-direction: row
+	align-items: center
+	img
+		padding: 5px 0px 0px 0px
+
+	.logo_text_container
+		margin-left: 13px
+		display: inline-flex
+		flex-direction: column
+		span
+			text-shadow: $text_shadow
+			font: 30px/1.2 'Lobster'
+			color: $logo_color
+			letter-spacing: 3px
+			display: block
+
+.logo_footer:hover
+	transform: scale(1.1)
+	transition: all 0.2s ease
+
+.fcbook svg:hover, .inst svg:hover
+	@include text-shadow

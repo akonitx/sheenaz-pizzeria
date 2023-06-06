@@ -1,0 +1,32 @@
+
+
+events {
+   worker_connections 100;
+}
+
+http {
+	upstream django{
+		server ${NGINX_PROXY_PASS};
+	}
+   include mime.types;
+   default_type application/octet-stream;
+
+   sendfile on;
+   aio on;
+   gzip on;
+
+   keepalive_timeout 75;
+
+   server {
+      listen ${NGINX_SERVER_PORT};
+      server_name ${NGINX_SERVER_HOST};
+
+      location / {
+         proxy_pass http://django;
+         proxy_set_header Host ${DOLLAR}host;
+         proxy_set_header X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
+         proxy_set_header X-Forwarded-Proto ${DOLLAR}scheme;
+      }
+   }
+
+}
